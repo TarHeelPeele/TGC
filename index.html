@@ -18,52 +18,98 @@
           <img src="./images/logoSmall.jpg" class="rounded float-left img-fluid" alt="TGC">
         </div>
         <div id= "game" class="col-6 h1">
-          Loading Game....
+          Loading Game...
         </div>
         <div class="col-3">
         </div>
       </div>
+      <!-- Hole Menu -->
+      <div class="row">
+        <div class="col-1"></div>
+        <nav aria-label="Hole">
+          <ul id="holeMenu" class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li id="hole1MenuItem" class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li id="hole2MenuItem" class="page-item"><a class="page-link" href="#">2</a></li>
+            <li id="hole3MenuItem" class="page-item"><a class="page-link" href="#">3</a></li>
+            <li id="hole4MenuItem" class="page-item"><a class="page-link" href="#">4</a></li>
+            <li id="hole5MenuItem" class="page-item"><a class="page-link" href="#">5</a></li>
+            <li id="hole6MenuItem" class="page-item"><a class="page-link" href="#">6</a></li>
+            <li id="hole7MenuItem" class="page-item"><a class="page-link" href="#">7</a></li>
+            <li id="hole8MenuItem" class="page-item"><a class="page-link" href="#">8</a></li>
+            <li id="hole9MenuItem" class="page-item"><a class="page-link" href="#">9</a></li>
+            <li id="hole10MenuItem" class="page-item"><a class="page-link" href="#">10</a></li>
+            <li id="hole11MenuItem" class="page-item"><a class="page-link" href="#">11</a></li>
+            <li id="hole12MenuItem" class="page-item"><a class="page-link" href="#">12</a></li>
+            <li id="hole13MenuItem" class="page-item"><a class="page-link" href="#">13</a></li>
+            <li id="hole14MenuItem" class="page-item"><a class="page-link" href="#">14</a></li>
+            <li id="hole15MenuItem" class="page-item"><a class="page-link" href="#">15</a></li>
+            <li id="hole16MenuItem" class="page-item"><a class="page-link" href="#">16</a></li>
+            <li id="hole17MenuItem" class="page-item"><a class="page-link" href="#">17</a></li>
+            <li id="hole18MenuItem" class="page-item"><a class="page-link" href="#">18</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>        
+      </div>
+
       <!--Scorecard Header Row-->
       <div class="row">
         <div class="col-1"></div>
-        <div class="col-2 fs-5 fw-bold">Golfer</div>
-        <div class="col-2">Tee</div>
-        <div class="col-1">Hcp</div>
-        <div class="col-1">Hole 1</div>
+        <div class="col-2 font-weight-bold bg-info">Golfer</div>
+        <div class="col-2 font-weight-bold bg-info">Tee</div>
+        <div class="col-1 font-weight-bold bg-info">Hcp</div>
+        <div class="col-1 font-weight-bold bg-info">Par</div>
+        <div class="col-1 font-weight-bold bg-info">Hcp</div>
+        <div id="holeScore" class="col-1 font-weight-bold  bg-info lead">Score</div>
       </div>
 
       <!--Golfer 1 Row-->
       <div class="row">
         <div class="col-1"></div>
-        <div id="golfer1" class="col-2 border"></div>
+        <div id="golfer1" class="col-2"></div>
         <div id="golfer1Tee" class="col-2"></div>
         <div id="golfer1Hcp" class="col-1"></div>
-        <div id="hole1" class="col-1"></div>
+        <div id="golfer1HolePar" class="col-1"></div>
+        <div id="golfer1HoleHcp" class="col-1"></div>
+        <div id="golfer1HoleScoreParent" class="col-1 bg-light lead">
+          <input type="number" id="golfer1HoleScore" name="golfer1HoleScore" min="1" max="9" step="1" maxlength="1" onclick="this.select()" oninput="this.value=this.value.slice(0,1);">
+        </div>
       </div>
-      
       <!--Golfer 2 Row-->
       <div class="row">
         <div class="col-1"></div>
-        <div id="golfer2" class="col-2 border"></div>
-        <div id="golfer2Tee" class="col-2"></div>
-        <div id="golfer2Hcp" class="col-1"></div>
-        <div id="hole1" class="col-1"></div>
+        <div id="golfer2" class="col-2 bg-light"></div>
+        <div id="golfer2Tee" class="col-2 bg-light"></div>
+        <div id="golfer2Hcp" class="col-1 bg-light"></div>
+        <div id="golfer2HolePar" class="col-1 bg-light"></div>
+        <div id="golfer2HoleHcp" class="col-1 bg-light"></div>
+        <div id="golfer2HoleScoreParent" class="col-1 bg-light lead">
+          <input type="number" id="golfer2HoleScore" name="golfer2HoleScore" min="1" max="9" step="1" maxlength="1" onclick="this.select()" oninput="this.value=this.value.slice(0,1);">
+        </div>
       </div>
       <!--Golfer 3 Row-->
       <div class="row">
         <div class="col-1"></div>
-        <div id="golfer3" class="col-2 border"></div>
+        <div id="golfer3" class="col-2"></div>
         <div id="golfer3Tee" class="col-2"></div>
         <div id="golfer3Hcp" class="col-1"></div>
-        <div id="hole1" class="col-1"></div>
+        <div id="golfer3HolePar" class="col-1"></div>
+        <div id="golfer3HoleHcp" class="col-1"></div>
+        <div id="golfer3HoleScoreParent" class="col-1 lead">
+          <input type="number" id="golfer3HoleScore" name="golfer3HoleScore" min="1" max="9" step="1" maxlength="1" onclick="this.select()" oninput="this.value=this.value.slice(0,1);">
+        </div>
       </div>
       <!--Golfer 4 Row-->
       <div class="row">
         <div class="col-1"></div>
-        <div id="golfer4" class="col-2 border"></div>
-        <div id="golfer4Tee" class="col-2"></div>
-        <div id="golfer4Hcp" class="col-1"></div>
-        <div id="hole1" class="col-1"></div>
+        <div id="golfer4" class="col-2 bg-light"></div>
+        <div id="golfer4Tee" class="col-2 bg-light"></div>
+        <div id="golfer4Hcp" class="col-1 bg-light"></div>
+        <div id="golfer4HolePar" class="col-1 bg-light"></div>
+        <div id="golfer4HoleHcp" class="col-1 bg-light"></div>
+        <div id="golfer4HoleScoreParent" class="col-1 bg-light lead">
+          <input type="number" id="golfer4HoleScore" name="golfer4HoleScore" min="1" max="9" step="1" maxlength="1" onclick="this.select()" oninput="this.value=this.value.slice(0,1);">
+        </div>
       </div>
 
       <!--Footer Row-->
