@@ -1,5 +1,5 @@
 let game;
-const cDeploymentId = "AKfycbwa85d_avo5z2B6DlmjxljisRT6SkUghSnJTM000tU8pV0wXES1lnZPxEjAkfhRBQlHwQ";
+const cDeploymentId = "AKfycbyCpekdGBoPsrLrgDfu0vpq8cI5PUSRYze8iLTW1XywHKh_hf-SXySqczqd1UVsPJ_d";
 const cURL = `https://script.google.com/macros/s/${cDeploymentId}/exec`
 $(function () {
   console.log("ready!");
