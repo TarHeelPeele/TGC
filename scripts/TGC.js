@@ -77,14 +77,13 @@ $("#holeMenu").on("click", "li", function () {
     }
   }
 
-  golfersHoleScores.scores = [{golfer:getGolfer(1).name,score:currentHoleScore(1)},
-                              {golfer:getGolfer(2).name,score:currentHoleScore(2)},
-                              {golfer:getGolfer(3).name,score:currentHoleScore(3)},
-                              {golfer:getGolfer(4).name,score:currentHoleScore(4)}];
+  //TODO:read this from local storage!!!!
+  golfersHoleScores.scores = [];
+  game.scorecard.golfers.forEach((golfer, i) => {
+    golfersHoleScores.scores.push({golfer:golfer.name,score:currentHoleScore(i + 1)});
+  });
+
   golfersHoleScores.holeNumber = currentHole();
-
-  console.log(JSON.stringify(golfersHoleScores));
-
   saveHole(golfersHoleScores).then((data) => {
     console.log(data); // JSON data parsed by `data.json()` call
   });
@@ -121,37 +120,33 @@ function currentHoleScore(golferNumber){
 
 function bindCurrentHoleInfo() {
   for (let i = 1; i <= 4; i++) {
-    $(`#golfer${i}HolePar`).text(getTee(getGolfer(i))[`hole${currentHole()}Par`]);
-    $(`#golfer${i}HoleHcp`).text(getTee(getGolfer(i))[`hole${currentHole()}Hcp`]);
+  }
+
+  game.scorecard.golfers.forEach((golfer, i) => {
+    $(`#golfer${i + 1}HolePar`).text(getTee(golfer)[`hole${currentHole()}Par`]);
+    $(`#golfer${i + 1}HoleHcp`).text(getTee(golfer)[`hole${currentHole()}Hcp`]);
 
     //if we have a score for this hole bind it
-    if (getGolfer(i).scores[currentHole() - 1]) {
-      $(`#golfer${i}HoleScore`).val(getGolfer(i).scores[currentHole() - 1]);
-      $(`#golfer${i}HoleScore`).removeClass("bg-warning");
-      $(`#golfer${i}HoleScore`).addClass("bg-success");
+    if (golfer.scores[currentHole() - 1]) {
+      $(`#golfer${i + 1}HoleScore`).val(golfer.scores[currentHole() - 1]);
+      $(`#golfer${i + 1}HoleScore`).removeClass("bg-warning");
+      $(`#golfer${i + 1}HoleScore`).addClass("bg-success");
     }
     else {
-      let golferExpectedScore = getTee(getGolfer(i))[`hole${currentHole()}Par`] + handicapHole(getGolfer(i).hcp, getTee(getGolfer(i))[`hole${currentHole()}Hcp`]);
-      $(`#golfer${i}HoleScore`).val(golferExpectedScore);
-      $(`#golfer${i}HoleScore`).removeClass("bg-success");
-      $(`#golfer${i}HoleScore`).addClass("bg-warning");
+      let golferExpectedScore = getTee(golfer)[`hole${currentHole()}Par`] + handicapHole(golfer.hcp, getTee(golfer)[`hole${currentHole()}Hcp`]);
+      $(`#golfer${i + 1}HoleScore`).val(golferExpectedScore);
+      $(`#golfer${i + 1}HoleScore`).removeClass("bg-success");
+      $(`#golfer${i + 1}HoleScore`).addClass("bg-warning");
     }
-  }
+  });
 }
 
 function bindGolferInfo() {
-  $("#golfer1").text(getGolfer(1).name);
-  $("#golfer2").text(getGolfer(2).name);
-  $("#golfer3").text(getGolfer(3).name);
-  $("#golfer4").text(getGolfer(4).name);
-  $("#golfer1Tee").text(getGolfer(1).tee);
-  $("#golfer2Tee").text(getGolfer(2).tee);
-  $("#golfer3Tee").text(getGolfer(3).tee);
-  $("#golfer4Tee").text(getGolfer(4).tee);
-  $("#golfer1Hcp").text(getGolfer(1).hcp);
-  $("#golfer2Hcp").text(getGolfer(2).hcp);
-  $("#golfer3Hcp").text(getGolfer(3).hcp);
-  $("#golfer4Hcp").text(getGolfer(4).hcp);
+  game.scorecard.golfers.forEach((golfer, i) => {
+    $(`#golfer${i + 1}`).text(golfer.name);
+    $(`#golfer${i + 1}Tee`).text(golfer.tee);
+    $(`#golfer${i + 1}Hcp`).text(golfer.hcp);
+  });
 }
 
 function getTee(golfer) {
@@ -161,7 +156,6 @@ function getTee(golfer) {
 function getGolfer(golferNumber) {
   return game.scorecard.golfers[golferNumber - 1];
 }
-
 
 async function saveHole(golfersHoleScores) {
   // Default options are marked with *
